@@ -12,6 +12,8 @@ Most recon tools throw a wordlist at a server and hope for a 200. **nextscope is
 
 Works against **Next.js, React, Vue, Nuxt, Remix** and any modern JS framework that compiles routes into bundles.
 
+> **Keywords:** nextjs endpoint scraper, nextjs api recon, javascript bundle recon, next.js security testing, api endpoint finder, js chunk analysis, bug bounty recon tool
+
 ---
 
 ## Why nextscope beats wordlist tools

@@ -1,16 +1,38 @@
 # nextscope 🔭
 
-> JS bundle API endpoint discovery tool for red team engagements and bug bounty hunting.
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
+![Stars](https://img.shields.io/github/stars/burhanmoin1/nextscope?style=social)
 
-Crawls a target website with a headless Chromium browser, intercepts every JavaScript chunk as it loads page-by-page, and extracts all hardcoded API endpoints — **no source code required**.
+> **Automated API endpoint discovery by intercepting JS bundle chunks in real-time.**
+> No wordlists. No brute force. No source code needed.
 
-Works against **Next.js, React, Vue, Nuxt** and any modern JS framework that compiles routes into bundles.
+Most recon tools throw a wordlist at a server and hope for a 200. **nextscope is different** — it uses a real Chromium browser to crawl the target site, intercepts every JavaScript chunk as it lazy-loads page by page, and extracts every hardcoded API endpoint directly from the bundle.
+
+Works against **Next.js, React, Vue, Nuxt, Remix** and any modern JS framework that compiles routes into bundles.
+
+---
+
+## Why nextscope beats wordlist tools
+
+| | nextscope | ffuf / dirsearch / gobuster |
+|---|---|---|
+| **Method** | Intercepts real JS chunks | Brute-forces with wordlist |
+| **False positives** | None — only real endpoints | Many |
+| **Finds lazy-loaded routes** | ✅ Yes | ❌ No |
+| **Finds internal API paths** | ✅ Yes | ❌ Rarely |
+| **Detects secrets in bundles** | ✅ Coming soon | ❌ No |
+| **Requires wordlist** | ❌ No | ✅ Yes |
+| **Noisy (many 404s)** | ❌ No | ✅ Very |
+
+---
 
 ## How it works
 
-Modern web apps (Next.js, React, Vue) compile every API path string directly into their JavaScript bundles. As you browse different pages, different chunks are lazy-loaded. `nextscope` automates this by:
+Modern web apps compile every API path string directly into their JavaScript bundles. As users browse different pages, different chunks lazy-load. `nextscope` automates this by:
 
-1. Visiting every page on the target site with a real Chromium browser
+1. Crawling every internal page on the target with a real Chromium browser
 2. Intercepting every `.js` chunk response in real-time as it loads
 3. Extracting `/api/...` paths from string literals and template literals
 4. Optionally probing each discovered endpoint and reporting HTTP status codes

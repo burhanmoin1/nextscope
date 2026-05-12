@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-api-hunter — Automated API Endpoint Discovery Tool
-====================================================
+nextscope — JS Bundle API Endpoint Discovery Tool
+==================================================
 Crawls a target website using a headless browser, intercepts all JS chunks
 as they load page-by-page, and extracts every hardcoded API endpoint.
+Works against Next.js, React, Vue, Nuxt and any JS framework that bundles routes.
 
 Usage:
-    python api_hunter.py https://www.example.com
-    python api_hunter.py https://www.example.com --probe --output results.json
+    python nextscope.py https://www.example.com
+    python nextscope.py https://www.example.com --probe --output results.json
 
 Author: github.com/burhanmoin1
 """
@@ -30,12 +31,12 @@ BOLD = "\033[1m"
 
 def banner():
     print(f"""{C}{BOLD}
-  ___  ____  ____      _   _ _   _ _   _ _____ _____ ____
- / _ \|  _ \|  _|    | | | | | | | \ | |_   _| ____|  _ \\
-| |_| | |_) | |  ___  | |_| | | | |  \| | | | |  _| | |_) |
-|  _  |  __/| | |___| |  _  | |_| | |\  | | | | |___|  _ <
-|_| |_|_|  |___|     |_| |_|\___/|_| \_| |_| |_____|_| \_\\
-{RESET}{W}  Automated API Endpoint Discovery Tool — Red Team Edition{RESET}
+  _ __   _____  _  __  __  ___  ___ ___  _ __  ___ 
+ | '_ \ / _ \ \/ / \ \/ / / __|/ __/ _ \| '_ \/ _ \
+ | | | |  __/>  <   >  <  \__ \ (_| (_) | |_) \__/
+ |_| |_|\___/_/\_\ /_/\_\ |___/\___\___/| .__/\___/
+                                         |_|        
+{RESET}{W}  JS Bundle API Endpoint Discovery — Red Team Edition{RESET}
 """)
 
 # ── Regex Patterns ───────────────────────────────────────────────────────────

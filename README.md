@@ -1,12 +1,14 @@
-# api-hunter 🎯
+# nextscope 🔭
 
-> Automated API endpoint discovery tool for red team engagements and bug bounty hunting.
+> JS bundle API endpoint discovery tool for red team engagements and bug bounty hunting.
 
 Crawls a target website with a headless Chromium browser, intercepts every JavaScript chunk as it loads page-by-page, and extracts all hardcoded API endpoints — **no source code required**.
 
+Works against **Next.js, React, Vue, Nuxt** and any modern JS framework that compiles routes into bundles.
+
 ## How it works
 
-Modern web apps (Next.js, React, Vue) compile every API path string directly into their JavaScript bundles. As you browse different pages, different chunks are lazy-loaded. `api-hunter` automates this by:
+Modern web apps (Next.js, React, Vue) compile every API path string directly into their JavaScript bundles. As you browse different pages, different chunks are lazy-loaded. `nextscope` automates this by:
 
 1. Visiting every page on the target site with a real Chromium browser
 2. Intercepting every `.js` chunk response in real-time as it loads
@@ -24,19 +26,19 @@ playwright install chromium
 
 ```bash
 # Basic discovery
-python api_hunter.py https://www.example.com
+python nextscope.py https://www.example.com
 
 # With endpoint probing (checks status codes)
-python api_hunter.py https://www.example.com --probe
+python nextscope.py https://www.example.com --probe
 
 # Save results to JSON
-python api_hunter.py https://www.example.com --probe --output results.json
+python nextscope.py https://www.example.com --probe --output results.json
 
 # Crawl more pages (default: 50)
-python api_hunter.py https://www.example.com --max-pages 200
+python nextscope.py https://www.example.com --max-pages 200
 
 # Faster crawl (reduce delay)
-python api_hunter.py https://www.example.com --delay 0.5
+python nextscope.py https://www.example.com --delay 0.5
 ```
 
 ## Output

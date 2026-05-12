@@ -104,9 +104,8 @@ async def hunt(target: str, probe: bool, output: str | None, max_pages: int, del
                 new   = found - endpoints
                 if new:
                     endpoints.update(new)
-                    chunk_name = url.split("/")[-1][:40]
                     for ep in sorted(new):
-                        print(f"  {G}+{RESET} {ep}  {Y}←{RESET} {chunk_name}")
+                        print(f"  {G}+{RESET} {ep}")
             except Exception:
                 pass
 

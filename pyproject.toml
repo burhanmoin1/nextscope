@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "nextscope"
+version = "1.0.0"
+description = "JS bundle API endpoint discovery tool for red team engagements"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Burhan Moin", email = "m.burhanmoin1@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = ["playwright>=1.40.0"]
+
+[project.scripts]
+nextscope = "nextscope:main"
+
+[project.urls]
+Homepage = "https://github.com/burhanmoin1/nextscope"

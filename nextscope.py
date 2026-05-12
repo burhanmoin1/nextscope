@@ -204,9 +204,12 @@ async def hunt(target: str, probe: bool, output: str | None, max_pages: int, del
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
-if __name__ == "__main__":
+def main():
+    import subprocess, sys
+    # Auto-install Chromium if not already installed
+    subprocess.run([sys.executable, "-m", "playwright", "install", "chromium"], check=False)
     parser = argparse.ArgumentParser(
-        description="api-hunter — Automated API endpoint discovery via JS chunk interception"
+        description="nextscope — JS bundle API endpoint discovery tool"
     )
     parser.add_argument("target", help="Target URL e.g. https://www.example.com")
     parser.add_argument("--probe",  action="store_true", help="Probe discovered endpoints and report HTTP status")
@@ -221,3 +224,6 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print(f"\n{Y}[!] Interrupted.{RESET}")
         sys.exit(0)
+
+if __name__ == "__main__":
+    main()

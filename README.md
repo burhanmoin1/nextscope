@@ -42,7 +42,12 @@ Modern web apps compile every API path string directly into their JavaScript bun
 ## Install
 
 ```bash
-pip install -r requirements.txt
+# 1. Clone the repo
+git clone https://github.com/burhanmoin1/nextscope.git
+cd nextscope
+
+# 2. Install — dependencies including Chromium install automatically
+pip3 install playwright
 playwright install chromium
 ```
 
@@ -50,7 +55,7 @@ playwright install chromium
 
 ```bash
 # Basic discovery
-python nextscope.py https://www.example.com
+python3 nextscope.py https://www.example.com
 
 # With endpoint probing (checks status codes)
 python nextscope.py https://www.example.com --probe

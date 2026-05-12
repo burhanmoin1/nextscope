@@ -1,0 +1,10 @@
+{
+  "target": "https://crewlo.dev",
+  "api_base": "https://api.crewlo.dev",
+  "pages_crawled": 8,
+  "chunks_intercepted": 15,
+  "endpoints": [
+    "/api/subscribe"
+  ],
+  "probe_results": []
+}

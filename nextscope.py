@@ -68,9 +68,15 @@ def extract_endpoints_from_js(js: str) -> set:
 # ── Crawler ──────────────────────────────────────────────────────────────────
 
 async def hunt(target: str, probe: bool, output: str | None, max_pages: int, delay: float):
+    import socket
     parsed = urlparse(target)
     base_domain = parsed.netloc
-    api_base = f"{parsed.scheme}://api.{base_domain.replace('www.', '')}"
+    api_host = f"api.{base_domain.replace('www.', '')}"
+    try:
+        socket.getaddrinfo(api_host, None)
+        api_base = f"{parsed.scheme}://{api_host}"
+    except socket.gaierror:
+        api_base = None
 
     endpoints: set[str]   = set()
     secrets: dict[str, list] = {}
@@ -80,7 +86,8 @@ async def hunt(target: str, probe: bool, output: str | None, max_pages: int, del
     visited: set[str]     = set()
 
     print(f"{C}[*]{RESET} Target   : {BOLD}{target}{RESET}")
-    print(f"{C}[*]{RESET} API Base : {BOLD}{api_base}{RESET}")
+    if api_base:
+        print(f"{C}[*]{RESET} API Base : {BOLD}{api_base}{RESET}")
     print(f"{C}[*]{RESET} Max pages: {max_pages}\n")
 
     async with async_playwright() as p:

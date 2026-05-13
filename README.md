@@ -1,4 +1,4 @@
-# nextscope 🔭
+# nextscope — Next.js API Endpoint Discovery Tool 🔭
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -8,11 +8,9 @@
 > **Automated API endpoint discovery by intercepting JS bundle chunks in real-time.**
 > No wordlists. No brute force. No source code needed.
 
-Most recon tools throw a wordlist at a server and hope for a 200. **nextscope is different** — it uses a real Chromium browser to crawl the target site, intercepts every JavaScript chunk as it lazy-loads page by page, and extracts every hardcoded API endpoint directly from the bundle.
+**nextscope** is a Next.js API endpoint scanner and JavaScript bundle recon tool for bug bounty hunters and penetration testers. It uses a real Chromium browser to crawl the target, intercepts every JS chunk as it lazy-loads page by page, and extracts every hardcoded API endpoint directly from the bundle — no guessing, no wordlists.
 
 Works against **Next.js, React, Vue, Nuxt, Remix** and any modern JS framework that compiles routes into bundles.
-
-> **Keywords:** nextjs endpoint scraper, nextjs api recon, javascript bundle recon, next.js security testing, api endpoint finder, js chunk analysis, bug bounty recon tool
 
 ---
 
